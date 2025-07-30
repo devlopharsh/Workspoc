@@ -1,9 +1,18 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from 'next/font/google';
 import "./globals.css";
+import HideNextToast from "../components/HideNextToast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  variable: '--font-poppins',
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
@@ -18,11 +27,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={poppins.variable} >
+      <body>
         {children}
+        
       </body>
     </html>
   );
