@@ -6,7 +6,7 @@ import * as LabelPrimitive from "@radix-ui/react-label"
 import { cn } from "@/lib/utils"
 
 function Label({
-  className, styles ,
+  className, styles , data,
   ...props
 }) {
   
@@ -27,7 +27,7 @@ function Label({
         styling(styles),
         className
       )}
-      {...props} />
+      {...props} >{data}</LabelPrimitive.Root>
   );
 }
 

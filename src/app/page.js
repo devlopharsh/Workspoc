@@ -18,8 +18,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 //imported components
 import HideNextToast from "./HideNextToast";
+import { useState } from "react";
 
 export default function Home() {
+
+  const [gender , setGender]= useState("");
   const handleChange = (e) => {
     let name = e.target.id;
     console.log(name);
@@ -63,60 +66,62 @@ export default function Home() {
             <div className="relative px-2 mt-2 ">
               <div className="flex w-full justify-between gap-4">
                 <span className="w-full">
-                  <Label htmlFor="email" styles="form_input">
-                    First Name
-                  </Label>
+                  <Label
+                    htmlFor="email"
+                    styles="form_input"
+                    data="First Name"
+                  />
                   <Input
                     id="First_Name"
                     type="email"
                     styles="text"
                     placeholder="First Name"
+                    onChange={handleChange}
                   />
                 </span>
                 <span className="w-full">
-                  <Label htmlFor="email" styles="form_input">
-                    Last Name
-                  </Label>
-                  <Input id="Last_Name" styles="text" type="text" placeholder="Last Name" />
+                  <Label htmlFor="email" styles="form_input" data="Last Name" />
+                  <Input
+                    id="Last_Name"
+                    styles="text"
+                    type="text"
+                    placeholder="Last Name"
+                    onChange={handleChange}
+                  />
                 </span>
               </div>
-              <Label htmlFor="email" styles="form_input">
-                Email address
-              </Label>
+              <Label htmlFor="email" styles="form_input" data="Email address" />
               <Input
                 id="email"
                 type="email"
                 styles="text"
                 placeholder="Enter your Email"
-              ></Input>
+                onChange={handleChange}
+              />
 
-              <Label htmlFor="email" styles="form_input">
-                Gender
-              </Label>
+              <Label htmlFor="email" styles="form_input" data="Gender" />
               <RadioGroup
                 defaultValue="option-one"
-                onValueChange={(value) => setSelectedOption(value)}
+                onValueChange={(value) => setGender(value)}
                 className="flex pt-3 justify-around space-y-2"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="option-one" id="option-one" />
-                  <Label htmlFor="option-one">Option One</Label>
+                  <RadioGroupItem value="Male" id="Male" />
+                  <Label htmlFor="Male" data="Male" />
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="option-two" id="option-two" />
-                  <Label htmlFor="option-two">Option Two</Label>
+                  <RadioGroupItem value="Female" id="Female" />
+                  <Label htmlFor="Female" data="Female" />
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="option-three" id="option-three" />
-                  <Label htmlFor="option-three">Option Three</Label>
+                  <RadioGroupItem value="prefer not to say" id="prefer not to say" />
+                  <Label htmlFor="prefer not to say" data="prefer not to say" />
                 </div>
               </RadioGroup>
 
-              <Label htmlFor="email" styles="form_input">
-                Country
-              </Label>
+              <Label htmlFor="email" styles="form_input" data="Country" />
               <Select className="w-full bg-transparent  ">
                 <SelectTrigger styles="form_select">
                   <SelectValue placeholder="Select" />
@@ -130,16 +135,15 @@ export default function Home() {
                 </SelectContent>
               </Select>
 
-              <Label htmlFor="email" styles="form_input">
-                Profile photo
-              </Label>
+              <Label htmlFor="email" styles="form_input" data="Profile photo" />
               <Input
                 id="profile"
                 type="file"
                 placeholder=" hello there"
                 className="text-gray-400 flex justify-center items-center "
+                onChange={handleChange}
               ></Input>
-            </div>
+            </div>  
 
             <div className="flex justify-between w-full mt-5 px-2 h-10">
               <Button variant="ghost" className="text-gray-500 h-full">
